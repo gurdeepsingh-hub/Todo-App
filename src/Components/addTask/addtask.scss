@@ -1,0 +1,51 @@
+.addtask {
+  position: fixed;
+  top: 200px;
+  left: 72vw;
+  background: #212b38;
+  width: 20vw;
+  height: auto;
+  border-radius: 15px;
+  padding: 15px;
+  .cancel {
+    float: right;
+    height: 15px;
+    color: #37465b;
+    cursor: pointer;
+  }
+  input,
+  .time {
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    width: 100%;
+    height: 30px;
+    color: #aff;
+    &::placeholder {
+      color: #37465b !important;
+    }
+  }
+  input {
+    border-bottom: 1px solid #37465b;
+  }
+  input[type="time"] {
+    color: #aff;
+    &::placeholder {
+      color: #37465b;
+    }
+  }
+  .time {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  button {
+    background: #aff;
+    border: none;
+    margin-top: 10px;
+    height: 25px;
+    border-radius: 5px;
+    width: 100%;
+  }
+}

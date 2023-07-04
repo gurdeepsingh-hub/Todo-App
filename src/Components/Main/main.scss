@@ -1,0 +1,36 @@
+.container {
+  background: #212b38;
+  width: 40vw;
+  height: 75vh;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 20px;
+
+  .search {
+    width: 100%;
+    display: flex;
+    gap: 15px;
+
+    input {
+      width: 100%;
+      height: 25px;
+      border: none;
+      background: none;
+      border-bottom: 1px solid #37465b;
+      color: #0bcc66;
+      &:focus {
+        outline: none;
+        border-bottom: 1px solid #0bcc66;
+      }
+    }
+    .addT {
+      width: 20%;
+      height: 25px;
+      border: none;
+      background: #0bcc66;
+      border-radius: 13px;
+      color: #212b38;
+      font-weight: 600;
+    }
+  }
+}
