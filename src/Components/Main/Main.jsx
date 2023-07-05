@@ -16,7 +16,7 @@ const Main = () => {
     console.log(newTask, editTask);
     editTask == null && setTasks((prevTasks) => [...prevTasks, newTask]);
     if (editTask != null) {
-      const copy = Tasks.filter((task) => task.id != editTask.id);
+      const copy = Tasks.filter((task) => task.id !== editTask.id);
       setTasks([...copy, newTask]);
     }
     setAddTask(false);
@@ -29,7 +29,7 @@ const Main = () => {
 
   //TASK FUNCTIONS
   const onDelete = (task) => {
-    const newTasks = Tasks.filter((item) => task.id != item.id);
+    const newTasks = Tasks.filter((item) => task.id !== item.id);
     setTasks([...newTasks]);
   };
   const onEditClicked = (task) => {
@@ -39,13 +39,13 @@ const Main = () => {
 
   //search
   useEffect(() => {
-    if (search == "") {
+    if (search === "") {
       setFilteredTasks(Tasks);
     } else {
       const filterArr = Tasks.filter((task) => task.title.includes(search));
       setFilteredTasks(filterArr);
     }
-  }, [search]);
+  }, [search, Tasks]);
 
   return (
     <div className="container">
@@ -62,7 +62,7 @@ const Main = () => {
       {addTask && (
         <AddTask onSubmit={onSubmit} onCancel={onCancel} editTask={editTask} />
       )}
-      {search == ""
+      {search === ""
         ? Tasks ||
           Tasks.map((task) => (
             <Task

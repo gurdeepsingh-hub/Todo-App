@@ -1,7 +1,6 @@
 import React from "react";
 import "./home.scss";
 
-import AddTask from "../../Components/addTask/AddTask";
 import Main from "../../Components/Main/Main";
 
 const Home = () => {
