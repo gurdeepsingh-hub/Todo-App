@@ -27,6 +27,10 @@
   }
   input {
     border-bottom: 1px solid #37465b;
+    &:focus {
+      outline: none;
+      border-bottom: 1px solid #aff;
+    }
   }
   input[type="time"] {
     color: #aff;
@@ -34,6 +38,7 @@
       color: #37465b;
     }
   }
+
   .time {
     display: flex;
     justify-content: space-between;

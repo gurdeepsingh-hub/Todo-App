@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./main.scss";
 import Task from "../Task/Task";
 import AddTask from "../addTask/AddTask";
 
 const Main = () => {
   const [Tasks, setTasks] = useState([]);
+
+  const [filteredTasks, setFilteredTasks] = useState([]);
+  const [search, setSearch] = useState("");
   const [addTask, setAddTask] = useState(false);
   const [editTask, setEditTask] = useState(null);
 
@@ -34,10 +37,24 @@ const Main = () => {
     setAddTask(true);
   };
 
+  //search
+  useEffect(() => {
+    if (search == "") {
+      setFilteredTasks(Tasks);
+    } else {
+      const filterArr = Tasks.filter((task) => task.title.includes(search));
+      setFilteredTasks(filterArr);
+    }
+  }, [search]);
+
   return (
     <div className="container">
       <div className="search">
-        <input type="text" />
+        <input
+          type="text"
+          placeholder="Search"
+          onChange={(e) => setSearch(e.target.value)}
+        />
         <button className="addT" onClick={() => setAddTask(true)}>
           Add task
         </button>
@@ -45,10 +62,25 @@ const Main = () => {
       {addTask && (
         <AddTask onSubmit={onSubmit} onCancel={onCancel} editTask={editTask} />
       )}
-      {Tasks &&
-        Tasks.map((task) => (
-          <Task task={task} onDelete={onDelete} onEditClicked={onEditClicked} />
-        ))}
+      {search == ""
+        ? Tasks ||
+          Tasks.map((task) => (
+            <Task
+              task={task}
+              onDelete={onDelete}
+              onEditClicked={onEditClicked}
+            />
+          )) ||
+          "NO TASK ADDED"
+        : (filteredTasks &&
+            filteredTasks.map((task) => (
+              <Task
+                task={task}
+                onDelete={onDelete}
+                onEditClicked={onEditClicked}
+              />
+            ))) ||
+          "NO MATCH FOUND"}
     </div>
   );
 };
