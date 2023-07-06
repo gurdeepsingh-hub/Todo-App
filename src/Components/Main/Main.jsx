@@ -63,14 +63,14 @@ const Main = () => {
         <AddTask onSubmit={onSubmit} onCancel={onCancel} editTask={editTask} />
       )}
       {search === ""
-        ? Tasks ||
-          Tasks.map((task) => (
-            <Task
-              task={task}
-              onDelete={onDelete}
-              onEditClicked={onEditClicked}
-            />
-          )) ||
+        ? (Tasks &&
+            Tasks.map((task) => (
+              <Task
+                task={task}
+                onDelete={onDelete}
+                onEditClicked={onEditClicked}
+              />
+            ))) ||
           "NO TASK ADDED"
         : (filteredTasks &&
             filteredTasks.map((task) => (
